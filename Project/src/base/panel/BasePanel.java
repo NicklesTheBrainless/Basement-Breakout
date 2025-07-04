@@ -6,7 +6,7 @@ import java.awt.*;
 public abstract class BasePanel extends JPanel implements Runnable {
 
     // FPS
-    protected final int MAX_FPS;
+    protected final int maxFPS;
 
     // Constants
     private final static int NANOSECONDS_PER_SECOND = 1_000_000_000;
@@ -14,7 +14,7 @@ public abstract class BasePanel extends JPanel implements Runnable {
     Thread gameThread;
 
     protected BasePanel(int maxFps) {
-        MAX_FPS = maxFps;
+        maxFPS = maxFps;
     }
 
     public void startProgramThread() {
@@ -34,21 +34,17 @@ public abstract class BasePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
-        double frameInterval = (double) NANOSECONDS_PER_SECOND / MAX_FPS;
+        double frameInterval = (double) NANOSECONDS_PER_SECOND / maxFPS;
         double delta = 0;
 
         long lastTime = System.nanoTime();
         long currentTime;
-
-        int timer = 0;
-        int currentFPS = 0;
 
         while (gameThread != null) {
 
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / frameInterval;
-            timer += (int) (currentTime - lastTime);
             lastTime = currentTime;
 
             if (delta >= 1) {
@@ -57,7 +53,6 @@ public abstract class BasePanel extends JPanel implements Runnable {
                 repaint();
 
                 delta--;
-                currentFPS++;
             }
         }
 

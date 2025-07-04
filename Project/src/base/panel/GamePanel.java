@@ -1,6 +1,7 @@
 package base.panel;
 
 import base.listeners.KeyHandler;
+import base.setting.Settings;
 
 import java.awt.*;
 
@@ -13,9 +14,9 @@ public class GamePanel extends BasePanel {
 
     public GamePanel() {
 
-        super(SETTING_FPS);
+        super(FPS);
 
-        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+        this.setPreferredSize(new Dimension(Settings.WIDTH, Settings.HEIGHT));
         this.setBackground(BACKGROUND_COLOR);
 
         this.setDoubleBuffered(true);
