@@ -17,6 +17,7 @@ public class Block extends Rectangle implements GameObject {
     }
 
 
+
     @Override
     public void update(double delta) {
 
