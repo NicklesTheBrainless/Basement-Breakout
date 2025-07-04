@@ -1,5 +1,6 @@
 package game;
 
+import base.panel.GamePanel;
 import utils.GameObject;
 
 import java.awt.*;
@@ -7,6 +8,8 @@ import java.awt.*;
 import static base.setting.Settings.STANDARD_BALL_RADIUS;
 
 public class Ball implements GameObject {
+
+    GamePanel gp;
 
     public double x;
     public double y;
@@ -16,7 +19,8 @@ public class Ball implements GameObject {
 
     public double radius = STANDARD_BALL_RADIUS;
 
-    public Ball(double x, double y, double vx, double vy) {
+    public Ball(GamePanel gp, double x, double y, double vx, double vy) {
+        this.gp = gp;
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -28,6 +32,11 @@ public class Ball implements GameObject {
     @Override
     public void update(double delta) {
 
+        updateVelocity();
+
+        updateWallCollisions();
+        updateBlockCollisions();
+
     }
 
     @Override
@@ -37,5 +46,40 @@ public class Ball implements GameObject {
     }
 
 
+
+    void updateVelocity() {
+        x += vx;
+        y += vy;
+    }
+
+    void updateWallCollisions() {
+
+        boolean collidesWallX = CollisionLogic.checkBallCollidesWallsX(this);
+        if (collidesWallX)
+            x = -x;
+
+        boolean collidesWallY = CollisionLogic.checkBallCollidesWallsY(this);
+        if (collidesWallY)
+            y = -y;
+    }
+
+    void updateBlockCollisions() {
+
+        for (Block block : gp.blocks)
+            evaluateBlockCollision(block);
+    }
+
+
+
+    void evaluateBlockCollision(Block block) {
+
+        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectX(this, block);
+        if (collidesBlockX)
+            x = -x;
+
+        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectY(this, block);
+        if (collidesBlockY)
+            y = -y;
+    }
 
 }

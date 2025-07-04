@@ -38,10 +38,20 @@ public class GamePanel extends BasePanel {
     @Override
     protected void update(double delta) {
 
+        for (Ball ball : balls)
+            ball.update(delta);
+        for (Block block : blocks)
+            block.update(delta);
+
     }
 
     @Override
     protected void draw(Graphics2D g2) {
+
+        for (Ball ball : balls)
+            ball.draw(g2);
+        for (Block block : blocks)
+            block.draw(g2);
 
     }
 

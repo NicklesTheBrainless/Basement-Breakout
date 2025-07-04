@@ -27,15 +27,16 @@ public abstract class CollisionLogic {
 
 
 
-    public static boolean checkBallCollidesRect(Ball ball, Rectangle rect) {
-
+    public static boolean checkBallCollidesRectX(Ball ball, Rectangle rect) {
         double closestX = clamp(ball.x, rect.x, rect.x + rect.width);
-        double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
-
         double dx = ball.x - closestX;
-        double dy = ball.y - closestY;
+        return (dx * dx) < (ball.radius * ball.radius);
+    }
 
-        return (dx * dx + dy * dy) < (ball.radius * ball.radius);
+    public static boolean checkBallCollidesRectY(Ball ball, Rectangle rect) {
+        double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
+        double dy = ball.y - closestY;
+        return (dy * dy) < (ball.radius * ball.radius);
     }
 
 
