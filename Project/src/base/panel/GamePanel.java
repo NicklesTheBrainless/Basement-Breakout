@@ -4,6 +4,7 @@ import base.listeners.KeyHandler;
 import base.setting.Settings;
 import game.Ball;
 import game.Block;
+import game.Platform;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class GamePanel extends BasePanel {
     public KeyHandler   keyH   = new KeyHandler();
 
     // game objects
+    public Platform platform = new Platform(this);
     public List<Ball> balls = new ArrayList<>();
     public List<Block> blocks = new ArrayList<>();
 
@@ -38,6 +40,8 @@ public class GamePanel extends BasePanel {
     @Override
     protected void update(double delta) {
 
+        platform.update(delta);
+
         for (Ball ball : balls)
             ball.update(delta);
         for (Block block : blocks)
@@ -47,6 +51,8 @@ public class GamePanel extends BasePanel {
 
     @Override
     protected void draw(Graphics2D g2) {
+
+        platform.draw(g2);
 
         for (Ball ball : balls)
             ball.draw(g2);

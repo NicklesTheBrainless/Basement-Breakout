@@ -5,9 +5,9 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    boolean W_justPressed;
-    boolean A_justPressed;
-    boolean D_justPressed;
+    public boolean W_justPressed;
+    public boolean A_justPressed;
+    public boolean D_justPressed;
 
     @Override
     public void keyTyped(KeyEvent e) {
