@@ -2,8 +2,12 @@ package base.panel;
 
 import base.listeners.KeyHandler;
 import base.setting.Settings;
+import game.Ball;
+import game.Block;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static base.setting.Settings.*;
 
@@ -11,6 +15,10 @@ public class GamePanel extends BasePanel {
 
     // input listeners
     public KeyHandler   keyH   = new KeyHandler();
+
+    // game objects
+    public List<Ball> balls = new ArrayList<>();
+    public List<Block> blocks = new ArrayList<>();
 
     public GamePanel() {
 

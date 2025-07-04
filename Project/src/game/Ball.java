@@ -32,7 +32,8 @@ public class Ball implements GameObject {
 
     @Override
     public void draw(Graphics2D g2) {
-
+        g2.setColor(Color.WHITE);
+        g2.fillOval((int) (x - radius), (int) (y - radius), (int) (radius * 2), (int) (radius * 2));
     }
 
 
