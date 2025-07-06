@@ -18,6 +18,7 @@ public abstract class Settings {
     // BALL
     public static final Color BALL_COLOR = Color.WHITE;
     public static final double STANDARD_BALL_RADIUS = 12;
+    public static final double STANDARD_BALL_SPEED = 8;
 
     // PLATFORM
     public static final Color PLATFORM_COLOR = Color.LIGHT_GRAY;

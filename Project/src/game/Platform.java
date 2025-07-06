@@ -7,6 +7,7 @@ import utils.GameObject;
 import java.awt.*;
 
 import static base.setting.Settings.*;
+import static utils.Utils.random;
 
 public class Platform extends Rectangle implements GameObject {
 
@@ -29,6 +30,9 @@ public class Platform extends Rectangle implements GameObject {
     public void update(double delta) {
 
         updateMovement();
+
+        if (keyH.W_pressed && gp.balls.isEmpty())
+            spawnBall();
     }
 
     @Override
@@ -51,6 +55,16 @@ public class Platform extends Rectangle implements GameObject {
             if (x + PLATFORM_WIDTH >= WIDTH)
                 x = WIDTH - PLATFORM_WIDTH;
         }
+    }
+
+
+
+    void spawnBall() {
+        double angle = random.nextDouble(-MAX_BOUNCE_ANGLE, MAX_BOUNCE_ANGLE);
+        double vx = STANDARD_BALL_SPEED * Math.sin(angle);
+        double vy = -STANDARD_BALL_SPEED * Math.cos(angle);
+        Ball ball = new Ball(gp, x + width/2.0, y - STANDARD_BALL_RADIUS - 2, vx, vy);
+        gp.balls.add(ball);
     }
 
 }

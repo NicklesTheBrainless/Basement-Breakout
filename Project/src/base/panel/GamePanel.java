@@ -39,8 +39,7 @@ public class GamePanel extends BasePanel {
 
     @Override
     protected void onStart() {
-        Ball ball = new Ball(this,  400, 300, -6, -4.5);
-        balls.add(ball);
+
     }
 
     @Override
