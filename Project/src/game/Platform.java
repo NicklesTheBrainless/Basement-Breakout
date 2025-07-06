@@ -28,19 +28,29 @@ public class Platform extends Rectangle implements GameObject {
     @Override
     public void update(double delta) {
 
-        if (keyH.A_justPressed)
-            x -= PLATFORM_SPEED;
-        if (keyH.D_justPressed)
-            x += PLATFORM_SPEED;
-
+        updateMovement();
     }
 
     @Override
     public void draw(Graphics2D g2) {
         g2.setColor(PLATFORM_COLOR);
-        g2.drawOval(x, y, 5, 5);
         g2.fillRect(x, y, width, height);
-        System.out.println(x + " " + y + "            :            " + width + " " + height);
+    }
+
+
+
+    void updateMovement() {
+
+        if (keyH.A_pressed) {
+            x -= PLATFORM_SPEED;
+            if (x < 0)
+                x = 0;
+        }
+        if (keyH.D_pressed){
+            x += PLATFORM_SPEED;
+            if (x + PLATFORM_WIDTH >= WIDTH)
+                x = WIDTH - PLATFORM_WIDTH;
+        }
     }
 
 }

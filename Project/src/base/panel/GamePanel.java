@@ -38,6 +38,12 @@ public class GamePanel extends BasePanel {
 
 
     @Override
+    protected void onStart() {
+        Ball ball = new Ball(this,  400, 300, -6, -4.5);
+        balls.add(ball);
+    }
+
+    @Override
     protected void update(double delta) {
 
         platform.update(delta);
@@ -47,6 +53,7 @@ public class GamePanel extends BasePanel {
         for (Block block : blocks)
             block.update(delta);
 
+        keyH.update();
     }
 
     @Override

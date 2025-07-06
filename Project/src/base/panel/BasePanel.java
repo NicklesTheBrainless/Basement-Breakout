@@ -23,7 +23,7 @@ public abstract class BasePanel extends JPanel implements Runnable {
         gameThread.start();
     }
 
-
+    protected abstract void onStart();
 
     protected abstract void update(double delta);
 
@@ -33,6 +33,8 @@ public abstract class BasePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
+
+        onStart();
 
         double frameInterval = (double) NANOSECONDS_PER_SECOND / maxFPS;
         double delta = 0;
