@@ -60,12 +60,22 @@ public class Ball implements GameObject {
 
     void updatePlatformBounce() {
 
-        boolean collidesPlatformX = CollisionLogic.checkBallCollidesRectAxisX(this, platform);
-        boolean collidesPlatformY = CollisionLogic.checkBallCollidesRectAxisY(this, platform);
+        boolean collidesPlatformX = CollisionLogic.checkBallCollidesRectX(this, platform);
+        boolean collidesPlatformY = CollisionLogic.checkBallCollidesRectY(this, platform);
 
-        if (collidesPlatformX || collidesPlatformY) {
+        if (collidesPlatformY || collidesPlatformX) {
+
+            if (collidesPlatformX)
+                x -= vx;
+
             y -= vy;
             vy = -vy;
+
+            boolean collidesPlatformX2 = CollisionLogic.checkBallCollidesRectX(this, platform);
+            boolean collidesPlatformY2 = CollisionLogic.checkBallCollidesRectY(this, platform);
+            System.out.println(collidesPlatformX2);
+            System.out.println(collidesPlatformY2);
+            System.out.println();
 
             double platformCenter = platform.x + (platform.width / 2.0);
             double distanceFromCenter = x - platformCenter;
@@ -98,21 +108,31 @@ public class Ball implements GameObject {
 
     void updateBlockCollisions() {
 
-        for (Block block : gp.blocks)
-            evaluateBlockCollision(block);
+        for (int i = 0; i < gp.blocks.size(); i++) {
+
+            Block block = gp.blocks.get(i);
+            boolean hit = evaluateBlockCollision(block);
+            if (hit) {
+                gp.blocks.remove(i);
+                break;
+            }
+        }
+
     }
 
 
 
-    void evaluateBlockCollision(Block block) {
+    boolean evaluateBlockCollision(Block block) {
 
-        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectAxisX(this, block);
+        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectX(this, block);
         if (collidesBlockX)
-            x = -x;
+            vx = -vx;
 
-        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectAxisY(this, block);
+        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectY(this, block);
         if (collidesBlockY)
-            y = -y;
+            vy = -vy;
+
+        return collidesBlockX || collidesBlockY;
     }
 
 }

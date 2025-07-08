@@ -40,6 +40,14 @@ public class GamePanel extends BasePanel {
     @Override
     protected void onStart() {
 
+        for (int iy = 0; iy < 2; iy++) {
+            for (int ix = 0; ix < 6; ix++) {
+
+                Block block = new Block(Color.ORANGE, ix * (STANDARD_BLOCK_WIDTH + 4) + 200,  iy * (STANDARD_BLOCK_HEIGHT + 4) + 100);
+                blocks.add(block);
+            }
+        }
+
     }
 
     @Override

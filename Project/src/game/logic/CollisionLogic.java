@@ -29,8 +29,7 @@ public abstract class CollisionLogic {
 
 
 
-    public static boolean checkBallCollidesRectAxisX(Ball ball, Rectangle rect) {
-
+    public static boolean checkBallCollidesRectX(Ball ball, Rectangle rect) {
         double closestX = clamp(ball.x, rect.x, rect.x + rect.width);
         double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
 
@@ -41,14 +40,10 @@ public abstract class CollisionLogic {
         if (!isColliding)
             return false;
 
-        double leftDistance  = Math.abs(ball.x - rect.x);
-        double rightDistance = Math.abs(ball.x - (rect.x + rect.width));
-
-        return leftDistance < ball.radius || rightDistance < ball.radius;
+        return Math.abs(dx) > Math.abs(dy);
     }
 
-    public static boolean checkBallCollidesRectAxisY(Ball ball, Rectangle rect) {
-
+    public static boolean checkBallCollidesRectY(Ball ball, Rectangle rect) {
         double closestX = clamp(ball.x, rect.x, rect.x + rect.width);
         double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
 
@@ -59,10 +54,7 @@ public abstract class CollisionLogic {
         if (!isColliding)
             return false;
 
-        double topDistance = Math.abs(ball.y - rect.y);
-        double bottomDistance = Math.abs(ball.y - (rect.y + rect.height));
-
-        return topDistance < ball.radius || bottomDistance < ball.radius;
+        return Math.abs(dy) > Math.abs(dx);
     }
 
 

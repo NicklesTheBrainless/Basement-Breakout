@@ -17,8 +17,12 @@ public abstract class Settings {
 
     // BALL
     public static final Color BALL_COLOR = Color.WHITE;
-    public static final double STANDARD_BALL_RADIUS = 12;
-    public static final double STANDARD_BALL_SPEED = 8;
+    public static final double STANDARD_BALL_RADIUS = 10;
+    public static final double STANDARD_BALL_SPEED = 9;
+
+    // BLOCK
+    public static final int STANDARD_BLOCK_WIDTH = 38;
+    public static final int STANDARD_BLOCK_HEIGHT = 20;
 
     // PLATFORM
     public static final Color PLATFORM_COLOR = Color.LIGHT_GRAY;
@@ -29,6 +33,6 @@ public abstract class Settings {
     public static final int PLATFORM_HEIGHT = 8;
 
     // BOUNCE
-    public static final double MAX_BOUNCE_ANGLE = Math.toRadians(65);
+    public static final double MAX_BOUNCE_ANGLE = Math.toRadians(60);
 
 }

@@ -1,19 +1,23 @@
 package game;
 
-import base.panel.GamePanel;
 import utils.GameObject;
 
 import java.awt.*;
 
-public class Block extends Rectangle implements GameObject {
+import static base.setting.Settings.STANDARD_BLOCK_HEIGHT;
+import static base.setting.Settings.STANDARD_BLOCK_WIDTH;
 
-    GamePanel gp;
+public class Block extends Rectangle implements GameObject {
 
     Color color;
 
-    public Block(GamePanel gp, Color color) {
-        this.gp = gp;
+    public Block(Color color, int x, int y) {
         this.color = color;
+        this.x = x;
+        this.y = y;
+
+        this.width  = STANDARD_BLOCK_WIDTH;
+        this.height = STANDARD_BLOCK_HEIGHT;
     }
 
 
