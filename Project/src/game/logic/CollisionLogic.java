@@ -4,8 +4,8 @@ import game.Ball;
 
 import java.awt.*;
 
-import static base.setting.Settings.HEIGHT;
-import static base.setting.Settings.WIDTH;
+import static base.setting.Settings.GAME_HEIGHT;
+import static base.setting.Settings.GAME_WIDTH;
 
 public abstract class CollisionLogic {
 
@@ -16,7 +16,7 @@ public abstract class CollisionLogic {
     }
 
     public static boolean checkBallCollidesRightWall(Ball ball) {
-        return (ball.x + ball.radius) > WIDTH;
+        return (ball.x + ball.radius) > GAME_WIDTH;
     }
 
     public static boolean checkBallCollidesTopWall(Ball ball) {
@@ -24,7 +24,7 @@ public abstract class CollisionLogic {
     }
 
     public static boolean checkBallCollidesBottomWall(Ball ball) {
-        return (ball.y + ball.radius) > HEIGHT;
+        return (ball.y + ball.radius) > GAME_HEIGHT;
     }
 
 

@@ -52,8 +52,8 @@ public class Platform extends Rectangle implements GameObject {
         }
         if (keyH.D_pressed){
             x += PLATFORM_SPEED;
-            if (x + PLATFORM_WIDTH >= WIDTH)
-                x = WIDTH - PLATFORM_WIDTH;
+            if (x + PLATFORM_WIDTH >= GAME_WIDTH)
+                x = GAME_WIDTH - PLATFORM_WIDTH;
         }
     }
 

@@ -6,8 +6,7 @@ import utils.GameObject;
 
 import java.awt.*;
 
-import static base.setting.Settings.MAX_BOUNCE_ANGLE;
-import static base.setting.Settings.STANDARD_BALL_RADIUS;
+import static base.setting.Settings.*;
 
 public class Ball implements GameObject {
 
@@ -47,7 +46,7 @@ public class Ball implements GameObject {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.WHITE);
+        g2.setColor(BALL_COLOR);
         g2.fillOval((int) (x - radius), (int) (y - radius), (int) (radius * 2), (int) (radius * 2));
     }
 
@@ -73,9 +72,8 @@ public class Ball implements GameObject {
 
             boolean collidesPlatformX2 = CollisionLogic.checkBallCollidesRectX(this, platform);
             boolean collidesPlatformY2 = CollisionLogic.checkBallCollidesRectY(this, platform);
-            System.out.println(collidesPlatformX2);
-            System.out.println(collidesPlatformY2);
-            System.out.println();
+            if (collidesPlatformX2 || collidesPlatformY2)
+                System.err.println("fuck, it still collides with the bouncy platform, the ball you knowww \n");
 
             double platformCenter = platform.x + (platform.width / 2.0);
             double distanceFromCenter = x - platformCenter;
@@ -123,16 +121,45 @@ public class Ball implements GameObject {
 
 
     boolean evaluateBlockCollision(Block block) {
+        boolean collidesX = CollisionLogic.checkBallCollidesRectX(this, block);
+        boolean collidesY = CollisionLogic.checkBallCollidesRectY(this, block);
 
-        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectX(this, block);
-        if (collidesBlockX)
+        if (collidesX && !collidesY) {
+            // Horizontal collision
             vx = -vx;
-
-        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectY(this, block);
-        if (collidesBlockY)
+            return true;
+        } else if (collidesY && !collidesX) {
+            // Vertical collision
             vy = -vy;
+            return true;
+        } else if (collidesX && collidesY) {
+            // Corner collision — choose dominant axis
+            if (Math.abs(vx) > Math.abs(vy)) {
+                vx = -vx;
+            } else {
+                vy = -vy;
+            }
+            return true;
+        }
 
-        return collidesBlockX || collidesBlockY;
+        return false;
     }
+
+//    boolean evaluateBlockCollision(Block block) {
+//
+//        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectX(this, block);
+//        if (collidesBlockX) {
+//            x -= vx;
+//            vx = -vx;
+//        }
+//
+//        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectY(this, block);
+//        if (collidesBlockY) {
+//            y -= vy;
+//            vy = -vy;
+//        }
+//
+//        return collidesBlockX || collidesBlockY;
+//    }
 
 }

@@ -4,20 +4,21 @@ import utils.GameObject;
 
 import java.awt.*;
 
-import static base.setting.Settings.STANDARD_BLOCK_HEIGHT;
-import static base.setting.Settings.STANDARD_BLOCK_WIDTH;
+import static base.resource.Resources.BLOCK_TEXTURE_TABLE;
+import static base.setting.Settings.*;
 
 public class Block extends Rectangle implements GameObject {
 
-    Color color;
+    int colorId;
+    int typeId;
 
-    public Block(Color color, int x, int y) {
-        this.color = color;
+    public Block(int x, int y, int colorId, int typeId) {
         this.x = x;
         this.y = y;
-
-        this.width  = STANDARD_BLOCK_WIDTH;
-        this.height = STANDARD_BLOCK_HEIGHT;
+        this.colorId = colorId;
+        this.typeId = typeId;
+        this.width  = BLOCK_WIDTH;
+        this.height = BLOCK_HEIGHT;
     }
 
 
@@ -29,7 +30,6 @@ public class Block extends Rectangle implements GameObject {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(color);
-        g2.fillRect(x, y, width, height);
+        g2.drawImage(BLOCK_TEXTURE_TABLE[colorId][typeId], x, y, width, height, null);
     }
 }
