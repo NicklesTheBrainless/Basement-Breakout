@@ -1,7 +1,7 @@
 package base.panel;
 
 import base.listeners.KeyHandler;
-import base.setting.Settings;
+import base.setting.GeneralSettings;
 import game.Ball;
 import game.Block;
 import game.Platform;
@@ -10,7 +10,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static base.setting.Settings.*;
+import static base.setting.GameSettings.BLOCK_HEIGHT;
+import static base.setting.GameSettings.BLOCK_WIDTH;
+import static base.setting.GeneralSettings.*;
 
 public class GamePanel extends BasePanel {
 
@@ -26,7 +28,7 @@ public class GamePanel extends BasePanel {
 
         super(FPS);
 
-        this.setPreferredSize(new Dimension(Settings.GAME_WIDTH, Settings.GAME_HEIGHT));
+        this.setPreferredSize(new Dimension(GeneralSettings.GAME_WIDTH, GeneralSettings.GAME_HEIGHT));
         this.setBackground(BACKGROUND_COLOR);
 
         this.setDoubleBuffered(true);
@@ -41,9 +43,9 @@ public class GamePanel extends BasePanel {
     protected void onStart() {
 
         for (int iy = 0; iy < 6; iy++) {
-            for (int ix = 0; ix < 11; ix++) {
+            for (int ix = 0; ix < 14; ix++) {
 
-                Block block = new Block(ix * BLOCK_WIDTH + 100, iy * BLOCK_HEIGHT + 100, iy % 3, 0);
+                Block block = new Block(ix * BLOCK_WIDTH + BLOCK_WIDTH, iy * BLOCK_HEIGHT + BLOCK_HEIGHT * 2, iy % 3, 0);
                 blocks.add(block);
             }
         }

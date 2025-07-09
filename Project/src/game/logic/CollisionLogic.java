@@ -4,8 +4,8 @@ import game.Ball;
 
 import java.awt.*;
 
-import static base.setting.Settings.GAME_HEIGHT;
-import static base.setting.Settings.GAME_WIDTH;
+import static base.setting.GeneralSettings.GAME_HEIGHT;
+import static base.setting.GeneralSettings.GAME_WIDTH;
 
 public abstract class CollisionLogic {
 

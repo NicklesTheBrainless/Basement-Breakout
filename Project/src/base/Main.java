@@ -4,7 +4,7 @@ import base.panel.GamePanel;
 
 import javax.swing.*;
 
-import static base.setting.Settings.TITLE;
+import static base.setting.GeneralSettings.TITLE;
 
 public class Main {
 

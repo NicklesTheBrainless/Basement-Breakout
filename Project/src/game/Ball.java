@@ -6,7 +6,8 @@ import utils.GameObject;
 
 import java.awt.*;
 
-import static base.setting.Settings.*;
+import static base.setting.GameSettings.*;
+import static base.setting.GeneralSettings.*;
 
 public class Ball implements GameObject {
 
