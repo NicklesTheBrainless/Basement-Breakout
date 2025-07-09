@@ -8,7 +8,7 @@ public abstract class Settings {
     public static final String TITLE = "Basement-Breakout";
 
     // FPS
-    public static final int FPS = 50;
+    public static final int FPS = 60;
 
     // SCREEN
     public static final int GAME_WIDTH = 800;
@@ -17,7 +17,7 @@ public abstract class Settings {
 
     // BALL
     public static final Color BALL_COLOR = Color.WHITE;
-    public static final double STANDARD_BALL_SPEED = 9;
+    public static final double STANDARD_BALL_SPEED = 6;
     public static final double STANDARD_BALL_RADIUS = 10;
 
     // PLATFORM
@@ -36,7 +36,7 @@ public abstract class Settings {
     public static final int BLOCK_TYPE_COUNT  = 4;
     public static final int ORIGINAL_BLOCK_WIDTH  = 16;
     public static final int ORIGINAL_BLOCK_HEIGHT = 8;
-    public static final int BLOCK_WIDTH  = ORIGINAL_BLOCK_WIDTH  * 4;
-    public static final int BLOCK_HEIGHT = ORIGINAL_BLOCK_HEIGHT * 4;
+    public static final int BLOCK_WIDTH  = (int) (ORIGINAL_BLOCK_WIDTH  * 3.5);
+    public static final int BLOCK_HEIGHT = (int) (ORIGINAL_BLOCK_HEIGHT * 3.5);
 
 }

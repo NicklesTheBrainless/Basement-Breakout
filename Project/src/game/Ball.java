@@ -121,45 +121,34 @@ public class Ball implements GameObject {
 
 
     boolean evaluateBlockCollision(Block block) {
+
         boolean collidesX = CollisionLogic.checkBallCollidesRectX(this, block);
         boolean collidesY = CollisionLogic.checkBallCollidesRectY(this, block);
 
-        if (collidesX && !collidesY) {
-            // Horizontal collision
+        boolean onlyCollidesX = (collidesX && !collidesY);
+        boolean onlyCollidesY = (collidesY && !collidesX);
+        boolean bothCollides  = (collidesX && collidesY);
+
+        if (onlyCollidesX) {
             vx = -vx;
             return true;
-        } else if (collidesY && !collidesX) {
-            // Vertical collision
+        }
+        if (onlyCollidesY)  {
             vy = -vy;
             return true;
-        } else if (collidesX && collidesY) {
-            // Corner collision — choose dominant axis
-            if (Math.abs(vx) > Math.abs(vy)) {
+        }
+        if (bothCollides) {
+
+            boolean xIsDominant = Math.abs(vx) > Math.abs(vy);
+            if (xIsDominant)
                 vx = -vx;
-            } else {
+            else
                 vy = -vy;
-            }
+
             return true;
         }
 
         return false;
     }
-
-//    boolean evaluateBlockCollision(Block block) {
-//
-//        boolean collidesBlockX = CollisionLogic.checkBallCollidesRectX(this, block);
-//        if (collidesBlockX) {
-//            x -= vx;
-//            vx = -vx;
-//        }
-//
-//        boolean collidesBlockY = CollisionLogic.checkBallCollidesRectY(this, block);
-//        if (collidesBlockY) {
-//            y -= vy;
-//            vy = -vy;
-//        }
-//
-//        return collidesBlockX || collidesBlockY;
-//    }
 
 }

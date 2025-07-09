@@ -30,6 +30,7 @@ public abstract class CollisionLogic {
 
 
     public static boolean checkBallCollidesRectX(Ball ball, Rectangle rect) {
+
         double closestX = clamp(ball.x, rect.x, rect.x + rect.width);
         double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
 
@@ -44,6 +45,7 @@ public abstract class CollisionLogic {
     }
 
     public static boolean checkBallCollidesRectY(Ball ball, Rectangle rect) {
+
         double closestX = clamp(ball.x, rect.x, rect.x + rect.width);
         double closestY = clamp(ball.y, rect.y, rect.y + rect.height);
 
