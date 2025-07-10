@@ -2,7 +2,7 @@ package game;
 
 import base.listeners.KeyHandler;
 import base.panel.GamePanel;
-import utils.GameObject;
+import utils.interfaces.GameObject;
 
 import java.awt.*;
 

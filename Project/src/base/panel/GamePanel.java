@@ -5,6 +5,7 @@ import base.setting.GeneralSettings;
 import game.Ball;
 import game.Block;
 import game.Platform;
+import game.manage.BlockManager;
 import utils.BlockMapReader;
 
 import java.awt.*;
@@ -21,6 +22,7 @@ public class GamePanel extends BasePanel {
 
     // game objects
     public Platform platform = new Platform(this);
+    public BlockManager blockM = new BlockManager(this);
     public List<Ball> balls = new ArrayList<>();
     public List<Block> blocks = BlockMapReader.read("/level_3.png");
 
@@ -51,8 +53,8 @@ public class GamePanel extends BasePanel {
 
         for (Ball ball : balls)
             ball.update(delta);
-        for (Block block : blocks)
-            block.update(delta);
+
+        blockM.update(delta);
 
         keyH.update();
     }
@@ -66,7 +68,6 @@ public class GamePanel extends BasePanel {
             ball.draw(g2);
         for (Block block : blocks)
             block.draw(g2);
-
     }
 
 }

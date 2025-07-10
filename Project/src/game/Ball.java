@@ -2,7 +2,7 @@ package game;
 
 import base.panel.GamePanel;
 import game.logic.CollisionLogic;
-import utils.GameObject;
+import utils.interfaces.GameObject;
 
 import java.awt.*;
 
@@ -111,10 +111,8 @@ public class Ball implements GameObject {
 
             Block block = gp.blocks.get(i);
             boolean hit = evaluateBlockCollision(block);
-            if (hit) {
-                gp.blocks.remove(i);
-                break;
-            }
+            if (hit)
+                block.broken = true;
         }
 
     }
