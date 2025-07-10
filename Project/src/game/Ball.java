@@ -110,6 +110,9 @@ public class Ball implements GameObject {
         for (int i = 0; i < gp.blocks.size(); i++) {
 
             Block block = gp.blocks.get(i);
+            if (block.broken)
+                continue;
+
             boolean hit = evaluateBlockCollision(block);
             if (hit)
                 block.broken = true;
