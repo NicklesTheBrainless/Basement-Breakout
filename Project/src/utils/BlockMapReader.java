@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Objects;
 
 import static base.setting.GameSettings.*;
-import static base.setting.GeneralSettings.*;
+import static base.setting.GeneralSettings.GAME_HEIGHT_IN_BLOCKS;
+import static base.setting.GeneralSettings.GAME_WIDTH_IN_BLOCKS;
 
 public abstract class BlockMapReader {
 
