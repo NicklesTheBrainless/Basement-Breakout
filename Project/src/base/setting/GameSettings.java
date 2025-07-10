@@ -26,7 +26,7 @@ public abstract class GameSettings {
 
     // PLATFORM
     public static final Color PLATFORM_COLOR = Color.WHITE;
-    public static final int PLATFORM_SPEED = 11;
+    public static final int PLATFORM_SPEED = 12;
     public static final int PLATFORM_WIDTH  = 120;
     public static final int PLATFORM_HEIGHT = 8;
     public static final int PLATFORM_X = (GAME_WIDTH + PLATFORM_WIDTH) / 2;

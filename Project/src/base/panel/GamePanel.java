@@ -22,7 +22,7 @@ public class GamePanel extends BasePanel {
     // game objects
     public Platform platform = new Platform(this);
     public List<Ball> balls = new ArrayList<>();
-    public List<Block> blocks = BlockMapReader.read("/level_1.png");
+    public List<Block> blocks = BlockMapReader.read("/level_3.png");
 
     public GamePanel() {
 
