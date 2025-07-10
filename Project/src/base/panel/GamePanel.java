@@ -5,14 +5,14 @@ import base.setting.GeneralSettings;
 import game.Ball;
 import game.Block;
 import game.Platform;
+import utils.BlockMapReader;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static base.setting.GameSettings.BLOCK_HEIGHT;
-import static base.setting.GameSettings.BLOCK_WIDTH;
-import static base.setting.GeneralSettings.*;
+import static base.setting.GeneralSettings.BACKGROUND_COLOR;
+import static base.setting.GeneralSettings.FPS;
 
 public class GamePanel extends BasePanel {
 
@@ -22,7 +22,7 @@ public class GamePanel extends BasePanel {
     // game objects
     public Platform platform = new Platform(this);
     public List<Ball> balls = new ArrayList<>();
-    public List<Block> blocks = new ArrayList<>();
+    public List<Block> blocks = BlockMapReader.read("/level_1.png");
 
     public GamePanel() {
 
@@ -41,14 +41,6 @@ public class GamePanel extends BasePanel {
 
     @Override
     protected void onStart() {
-
-        for (int iy = 0; iy < 6; iy++) {
-            for (int ix = 0; ix < 14; ix++) {
-
-                Block block = new Block(ix * BLOCK_WIDTH + BLOCK_WIDTH, iy * BLOCK_HEIGHT + BLOCK_HEIGHT * 2, iy % 3, 0);
-                blocks.add(block);
-            }
-        }
 
     }
 

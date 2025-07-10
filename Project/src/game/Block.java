@@ -7,7 +7,6 @@ import java.awt.*;
 import static base.resource.Resources.BLOCK_TEXTURE_TABLE;
 import static base.setting.GameSettings.BLOCK_HEIGHT;
 import static base.setting.GameSettings.BLOCK_WIDTH;
-import static base.setting.GeneralSettings.*;
 
 public class Block extends Rectangle implements GameObject {
 

@@ -7,7 +7,6 @@ import utils.GameObject;
 import java.awt.*;
 
 import static base.setting.GameSettings.*;
-import static base.setting.GeneralSettings.*;
 
 public class Ball implements GameObject {
 
@@ -71,10 +70,11 @@ public class Ball implements GameObject {
             y -= vy;
             vy = -vy;
 
-            boolean collidesPlatformX2 = CollisionLogic.checkBallCollidesRectX(this, platform);
-            boolean collidesPlatformY2 = CollisionLogic.checkBallCollidesRectY(this, platform);
-            if (collidesPlatformX2 || collidesPlatformY2)
-                System.err.println("fuck, it still collides with the bouncy platform, the ball you knowww \n");
+            boolean collidesPlatformAgainX = CollisionLogic.checkBallCollidesRectX(this, platform);
+            boolean collidesPlatformAgainY = CollisionLogic.checkBallCollidesRectY(this, platform);
+            if (collidesPlatformAgainX || collidesPlatformAgainY)
+                y = PLATFORM_Y - radius;
+
 
             double platformCenter = platform.x + (platform.width / 2.0);
             double distanceFromCenter = x - platformCenter;

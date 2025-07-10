@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static base.setting.GameSettings.*;
-import static base.setting.GeneralSettings.*;
 
 public abstract class Resources {
 

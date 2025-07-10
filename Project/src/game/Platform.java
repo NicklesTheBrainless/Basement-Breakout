@@ -7,7 +7,7 @@ import utils.GameObject;
 import java.awt.*;
 
 import static base.setting.GameSettings.*;
-import static base.setting.GeneralSettings.*;
+import static base.setting.GeneralSettings.GAME_WIDTH;
 import static utils.Utils.random;
 
 public class Platform extends Rectangle implements GameObject {
