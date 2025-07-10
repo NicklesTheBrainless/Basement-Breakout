@@ -29,6 +29,9 @@ public abstract class BlockMapReader {
                     int rgb = mapImage.getRGB(x, y);
                     int colorId = getColorId(rgb);
 
+                    if (colorId == -1)
+                        continue;
+
                     blocks.add(new Block(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, colorId, 0));
                 }
             }
@@ -47,6 +50,9 @@ public abstract class BlockMapReader {
         int red   = color.getRed();
         int green = color.getGreen();
         int blue  = color.getBlue();
+
+        if (red == green && red == blue)
+            return -1;
 
         if (red >= green   &&   red >= blue)
             return RED_ID;
