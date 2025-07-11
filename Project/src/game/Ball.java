@@ -7,6 +7,7 @@ import utils.interfaces.GameObject;
 import java.awt.*;
 
 import static base.setting.GameSettings.*;
+import static java.lang.Math.clamp;
 
 public class Ball implements GameObject {
 
@@ -124,33 +125,27 @@ public class Ball implements GameObject {
 
     boolean evaluateBlockCollision(Block block) {
 
-        boolean collidesX = CollisionLogic.checkBallCollidesRectX(this, block);
-        boolean collidesY = CollisionLogic.checkBallCollidesRectY(this, block);
+        double closestX = clamp(this.x, block.x, block.x + block.width);
+        double closestY = clamp(this.y, block.y, block.y + block.height);
 
-        boolean onlyCollidesX = (collidesX && !collidesY);
-        boolean onlyCollidesY = (collidesY && !collidesX);
-        boolean bothCollides  = (collidesX && collidesY);
+        double dx = this.x - closestX;
+        double dy = this.y - closestY;
 
-        if (onlyCollidesX) {
-            vx = -vx;
-            return true;
-        }
-        if (onlyCollidesY)  {
-            vy = -vy;
-            return true;
-        }
-        if (bothCollides) {
+        double distanceSquared = dx * dx + dy * dy;
+        if (distanceSquared > this.radius * this.radius)
+            return false;
 
-            boolean xIsDominant = Math.abs(vx) > Math.abs(vy);
-            if (xIsDominant)
-                vx = -vx;
-            else
-                vy = -vy;
+        double distance = Math.sqrt(distanceSquared);
+        if (distance == 0) return false;
 
-            return true;
-        }
+        double nx = dx / distance;
+        double ny = dy / distance;
 
-        return false;
+        double dot = vx * nx + vy * ny;
+        vx = vx - 2 * dot * nx;
+        vy = vy - 2 * dot * ny;
+
+        return true;
     }
 
 }

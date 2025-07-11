@@ -6,6 +6,7 @@ import java.awt.*;
 
 import static base.setting.GeneralSettings.GAME_HEIGHT;
 import static base.setting.GeneralSettings.GAME_WIDTH;
+import static java.lang.Math.clamp;
 
 public abstract class CollisionLogic {
 
@@ -57,12 +58,6 @@ public abstract class CollisionLogic {
             return false;
 
         return Math.abs(dy) > Math.abs(dx);
-    }
-
-
-
-    private static double clamp(double value, double min, double max) {
-        return Math.max(min, Math.min(max, value));
     }
 
 }
